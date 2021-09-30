@@ -36,27 +36,39 @@
               @mouseleave="mouseleave"
               @mousedown="mousedown"
             >
-              <div
-                class="wrapper items-center flex justify-center"
-                style="width: 48px; height: 48px"
-                :href="customHref || `/dashboard/guild/${serverid}/`"
-              >
-                <svg
-                  v-if="isSvg"
-                  class="icon"
-                  :width="svgWidth"
-                  :height="svgHeight"
-                  :viewBox="`0 0 ${svgWidth} ${svgHeight}`"
+              <div>
+                <component
+                  :is="!customHref || (customHref && customHref.startsWith('/')) ? 'NuxtLink' : 'a'"
+                  class="wrapper items-center flex justify-center"
+                  style="width: 48px; height: 48px"
+                  :href="
+                    !(!customHref || (customHref && customHref.startsWith('/')))
+                      ? customHref || `/dashboard/guild/${serverid}/`
+                      : undefined
+                  "
+                  :to="
+                    !customHref || (customHref && customHref.startsWith('/'))
+                      ? customHref || `/dashboard/guild/${serverid}/`
+                      : undefined
+                  "
                 >
-                  <path
-                    :class="`${isSelected || isHovered ? svgFillHover : svgFill} ${
-                      isSelected || isHovered ? svgBackgroundHover : svgBackground
-                    }`"
-                    fill="currentColor"
-                    :d="icon"
-                  ></path>
-                </svg>
-                <img v-else-if="icon" class="icon" :src="icon" alt="" width="48" height="48" />
+                  <svg
+                    v-if="isSvg"
+                    class="icon"
+                    :width="svgWidth"
+                    :height="svgHeight"
+                    :viewBox="`0 0 ${svgWidth} ${svgHeight}`"
+                  >
+                    <path
+                      :class="`${isSelected || isHovered ? svgFillHover : svgFill} ${
+                        isSelected || isHovered ? svgBackgroundHover : svgBackground
+                      }`"
+                      fill="currentColor"
+                      :d="icon"
+                    ></path>
+                  </svg>
+                  <img v-else-if="icon" class="icon" :src="icon" alt="" width="48" height="48" />
+                </component>
               </div>
             </foreignObject>
           </svg>
@@ -83,10 +95,11 @@ export default Vue.extend({
     name: { type: String, required: true },
     serverid: { type: String, required: true },
     draggable: { type: Boolean, required: false, default: false },
+    selected: { type: Boolean, required: false, default: false },
   },
   data() {
     return {
-      isSelected: false,
+      isSelected: this.selected,
       isHovered: false,
     }
   },

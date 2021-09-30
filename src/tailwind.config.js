@@ -13,7 +13,7 @@ module.exports = {
         'custom-hover': '#2A2C30',
         'custom-background': '#2F3136',
         'discord-green': '#3BA55D',
-        'discord-blurple': "#5865F2"
+        'discord-blurple': '#5865F2',
       },
     },
   },

@@ -6,17 +6,16 @@
       <div class="block relative m-0 p-0">
         <div class="flex justify-center relative p-0" style="width: 72px; margin-bottom: 8px"></div>
       </div>
-      <svg height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-      </svg>
+
       <!-- Home -->
       <ServerIcon
-        icon=""
+        icon="M10 20C10 20 10 14 10 14 10 14 14 14 14 14 14 14 14 20 14 20 14 20 19 20 19 20 19 20 19 12 19 12 19 12 22 12 22 12 22 12 12 3 12 3 12 3 2 12 2 12 2 12 5 12 5 12 5 12 5 20 5 20 5 20 10 20 10 20"
         :isSvg="true"
         serverid="home"
         name="Home"
         svgBackgroundHover="bg-discord-blurple"
+        svgFill="text-white"
+        customHref="/dashboard/home"
       ></ServerIcon>
 
       <!-- Spacer -->
