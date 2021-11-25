@@ -1,0 +1,19 @@
+<script src="/scripts/index.js"></script>
+<script
+  src="https://browser.sentry-cdn.com/6.15.0/bundle.min.js"
+  integrity="sha384-uAr9Te+rNkmpaCjPTu4/ipQDpO1nR6fEY8JX+NHVNO5mY6LUs362JWJD8rHyaLEt"
+  crossorigin="anonymous"
+></script>
+<script>
+    Sentry.init({
+      dsn: "(insert sentry dsn)",
+      beforeSend(event, hint) {
+        if (event.exception) {
+          Sentry.showReportDialog({ eventId: event.event_id });
+        }
+        return event;
+      },
+    });
+  </script>
+</body>
+</html>
