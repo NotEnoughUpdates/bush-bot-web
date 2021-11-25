@@ -7,13 +7,8 @@
 
 <script>
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 
-export default Vue.extend({
-  router: new VueRouter({
-    routes: [{ path: '/dashboard/guild/:id' }],
-  }),
-})
+export default Vue.extend({})
 </script>
 
 <style></style>
